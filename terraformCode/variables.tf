@@ -17,9 +17,9 @@ variable "security_group" {}
 variable "IGW_name" {}
 variable "key_name" {}
 
-variable "public_subnet1_name" {}
-variable "public_subnet2_name" {}
-variable "public_subnet3_name" {}
+# variable "public_subnet1_name" {}
+# variable "public_subnet2_name" {}
+# variable "public_subnet3_name" {}
 variable "env" {}
 
 variable Main_Routing_Table {}
