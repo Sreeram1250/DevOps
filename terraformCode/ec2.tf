@@ -14,3 +14,34 @@ resource "aws_instance" "web-1" {
 	    CostCenter = "ABCD"
     }
 }
+
+resource "null_resource" "nginxinstall" {
+
+    provisioner "remote-exec" {
+    count="${var.env=="Prod" ? 3 :1 }"
+    inline = [
+      "sudo yum update -y",
+      "sudo yum install nginx -y",
+      "sudo service nginx start"
+
+      ]
+    connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    private_key = "${file("SREERAM.pem")}"
+    host     = "${element(aws_instance.web-1.*.public_ip, 0)}"
+    }
+    }
+
+}
+
+resource "null_resource" "instancedetails" {
+    
+    provisioner "local-exec" {
+    command = <<EOH
+    echo "${element(aws_instance.web-1.*.public_ip, 0)}" >> details.txt && echo "${element(aws_instance.web-1.*.private_ip, 0)}" >> details.txt && echo "${element(aws_instance.web-1.*.public_dns, 0)}" >> details.txt
+    EOH
+  }
+    
+    depends_on = ["aws_instance.web-1"]
+}
