@@ -18,7 +18,7 @@ resource "aws_instance" "web-1" {
 resource "null_resource" "nginxinstall" {
 
     provisioner "remote-exec" {
-    count="${var.env=="Prod" ? 3 :1 }"
+    
     inline = [
       "sudo yum update -y",
       "sudo yum install nginx -y",
