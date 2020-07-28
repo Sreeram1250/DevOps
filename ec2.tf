@@ -1,6 +1,6 @@
 data "aws_ami" "my_ami" {
      most_recent      = true     
-     owners           = ["721834156908"]
+     owners           = ["214969243156"]
 }
 
 resource "aws_instance" "web-1" {
