@@ -5,13 +5,7 @@ provider "aws" {
 }
 
 
-terraform {
-  backend "s3" {
-    bucket = "sreeraminfytest"
-    key    = "terraform/tfstatefiles"
-    region = "ap-southeast-2"
-  }
-}
+
 resource "aws_vpc" "default" {
     cidr_block = "${var.vpc_cidr}"
     enable_dns_hostnames = true
