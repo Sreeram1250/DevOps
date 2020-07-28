@@ -6,7 +6,8 @@ data "aws_ami" "my_ami" {
 resource "aws_instance" "web-1" {
     #ami = "${data.aws_ami.my_ami.id}"
     ami = "ami-020d764f9372da231"
-    count="${var.env=="Prod" ? 3 :1 }"
+    #count="${var.env=="Prod" ? 3 :1 }"
+    count=1
     availability_zone = "${element(var.azs,count.index)}"
     instance_type = "t2.micro"
     key_name = "${var.key_name}"
