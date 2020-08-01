@@ -1,5 +1,5 @@
 #!/bin/bash
-# My First Commitauto trigger test
+# My First Commitauto trigger test 1
 PH=$(curl -sL http://169.254.169.254/latest/meta-data/public-hostname)
 PIP=$(curl -sL http://169.254.169.254/latest/meta-data/public-ipv4)
 sg=$(curl -sL http://169.254.169.254/latest/meta-data/security-groups)
